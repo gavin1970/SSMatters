@@ -157,6 +157,8 @@
     <None Include="Resources\folder.png" />
     <None Include="Resources\copy-to-clipboard.jpg" />
     <None Include="Resources\delete.png" />
+    <Content Include="imgs\Screenshot.jpg" />
+    <Content Include="imgs\Screenshot.png" />
     <Content Include="SizeMatters.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
