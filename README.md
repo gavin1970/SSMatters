@@ -1,2 +1,2 @@
 # SSMatters
-[image](https://raw.githubusercontent.com/gavin1970/SSMatters/main/SSMatters/imgs/Screenshot.png)
+![Screenshot](https://github.com/gavin1970/SSMatters/blob/main/SSMatters/imgs/Screenshot.jpg)
