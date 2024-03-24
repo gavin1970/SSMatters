@@ -63,6 +63,16 @@ namespace SSMatters.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chizl_default_icon {
+            get {
+                object obj = ResourceManager.GetObject("chizl_default_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap copy_to_clipboard {
             get {
                 object obj = ResourceManager.GetObject("copy-to-clipboard", resourceCulture);
@@ -96,6 +106,16 @@ namespace SSMatters.Properties {
         internal static System.Drawing.Bitmap folder {
             get {
                 object obj = ResourceManager.GetObject("folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap power_off {
+            get {
+                object obj = ResourceManager.GetObject("power_off", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

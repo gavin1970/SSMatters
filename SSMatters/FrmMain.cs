@@ -481,6 +481,10 @@ namespace SSMatters
                 LastMOObject = null;
                 this.LblFolderHoverInfo.Hide();
                 this.LblFileHoverInfo.Hide();
+                if(isFolder)
+                    this.FolderTreeMapPanel.Cursor = Cursors.Default;
+                else
+                    this.FileTreeMapPanel.Cursor = Cursors.Default;
             }
             else
             {
@@ -762,6 +766,8 @@ namespace SSMatters
             {
                 if (newLastMOObject != null && newLastMOObject != LastMOObject)
                 {
+
+                    this.FolderTreeMapPanel.Cursor = Cursors.Hand;
                     LastMOObject = newLastMOObject;
                     FolderData folder = LastMOObject as FolderData;
                     this.CurrentMouseOver = folder.FullPath;
@@ -786,13 +792,14 @@ namespace SSMatters
                 else if (newLastMOObject == null)
                 {
                     ShowHoverInfo(string.Empty, PointF.Empty, isFolder);
-                    this.Cursor = Cursors.Default;
+                    //this.Cursor = Cursors.Default;
                 }
             }
             else 
             {
                 if (newLastMOObject != null && newLastMOObject != LastMOObject)
                 {
+                    this.FileTreeMapPanel.Cursor = Cursors.Hand;
                     LastMOObject = newLastMOObject;
                     FileData file = LastMOObject as FileData;
                     this.CurrentMouseOver = file.FullName;
@@ -810,12 +817,11 @@ namespace SSMatters
                         sb.AppendLine($"Error: {file.Info}");
 
                     ShowHoverInfo(sb.ToString(), point, false);
-                    this.Cursor = Cursors.Hand;
                 }
                 else if (newLastMOObject == null)
                 {
                     ShowHoverInfo(string.Empty, PointF.Empty, isFolder);
-                    this.Cursor = Cursors.Default;
+                    //this.Cursor = Cursors.Default;
                 }
             }
         }
@@ -1033,6 +1039,10 @@ namespace SSMatters
                 StopIOMonitor();
         }
         private void BackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GoBack();
+        }
+        private void MenuActionsBack_Click(object sender, EventArgs e)
         {
             GoBack();
         }
