@@ -46,6 +46,11 @@ namespace SSMatters
             this.BtnPickFolder = new System.Windows.Forms.Button();
             this.FolderTreeMapPanel = new System.Windows.Forms.Panel();
             this.FileFolderContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.BackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.CopyInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LblFolderHoverInfo = new System.Windows.Forms.Label();
             this.LblCurrentPath = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -56,11 +61,6 @@ namespace SSMatters
             this.FileTreeMapPanel = new System.Windows.Forms.Panel();
             this.LblFileHoverInfo = new System.Windows.Forms.Label();
             this.WatchTimer = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.BackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CopyInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.OpenLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainWinMenuStrip.SuspendLayout();
             this.MainStatusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -230,8 +230,45 @@ namespace SSMatters
             this.OpenLocationToolStripMenuItem,
             this.DeleteToolStripMenuItem});
             this.FileFolderContextMenuStrip.Name = "FileFolderContextMenuStrip";
-            this.FileFolderContextMenuStrip.Size = new System.Drawing.Size(181, 120);
+            this.FileFolderContextMenuStrip.Size = new System.Drawing.Size(169, 98);
             this.FileFolderContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.FileFolderContextMenuStrip_Opening);
+            // 
+            // BackToolStripMenuItem
+            // 
+            this.BackToolStripMenuItem.Image = global::SSMatters.Properties.Resources.dot_left_arrow_live;
+            this.BackToolStripMenuItem.Name = "BackToolStripMenuItem";
+            this.BackToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.BackToolStripMenuItem.Text = "&Back";
+            this.BackToolStripMenuItem.Click += new System.EventHandler(this.BackToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(165, 6);
+            // 
+            // CopyInformationToolStripMenuItem
+            // 
+            this.CopyInformationToolStripMenuItem.Image = global::SSMatters.Properties.Resources.copy_to_clipboard;
+            this.CopyInformationToolStripMenuItem.Name = "CopyInformationToolStripMenuItem";
+            this.CopyInformationToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.CopyInformationToolStripMenuItem.Text = "&Copy Information";
+            this.CopyInformationToolStripMenuItem.Click += new System.EventHandler(this.CopyInformationToolStripMenuItem_Click);
+            // 
+            // OpenLocationToolStripMenuItem
+            // 
+            this.OpenLocationToolStripMenuItem.Image = global::SSMatters.Properties.Resources.folder;
+            this.OpenLocationToolStripMenuItem.Name = "OpenLocationToolStripMenuItem";
+            this.OpenLocationToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.OpenLocationToolStripMenuItem.Text = "&Open Location";
+            this.OpenLocationToolStripMenuItem.Click += new System.EventHandler(this.OpenLocationToolStripMenuItem_Click);
+            // 
+            // DeleteToolStripMenuItem
+            // 
+            this.DeleteToolStripMenuItem.Image = global::SSMatters.Properties.Resources.delete;
+            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.DeleteToolStripMenuItem.Text = "&Delete";
+            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // LblFolderHoverInfo
             // 
@@ -303,6 +340,7 @@ namespace SSMatters
             // 
             // FileFldrSplitContainer
             // 
+            this.FileFldrSplitContainer.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.FileFldrSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FileFldrSplitContainer.Location = new System.Drawing.Point(0, 55);
             this.FileFldrSplitContainer.Name = "FileFldrSplitContainer";
@@ -351,43 +389,6 @@ namespace SSMatters
             this.WatchTimer.Enabled = true;
             this.WatchTimer.Interval = 300;
             this.WatchTimer.Tick += new System.EventHandler(this.WatchTimer_Tick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // BackToolStripMenuItem
-            // 
-            this.BackToolStripMenuItem.Image = global::SSMatters.Properties.Resources.dot_left_arrow_live;
-            this.BackToolStripMenuItem.Name = "BackToolStripMenuItem";
-            this.BackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.BackToolStripMenuItem.Text = "&Back";
-            this.BackToolStripMenuItem.Click += new System.EventHandler(this.BackToolStripMenuItem_Click);
-            // 
-            // CopyInformationToolStripMenuItem
-            // 
-            this.CopyInformationToolStripMenuItem.Image = global::SSMatters.Properties.Resources.copy_to_clipboard;
-            this.CopyInformationToolStripMenuItem.Name = "CopyInformationToolStripMenuItem";
-            this.CopyInformationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.CopyInformationToolStripMenuItem.Text = "&Copy Information";
-            this.CopyInformationToolStripMenuItem.Click += new System.EventHandler(this.CopyInformationToolStripMenuItem_Click);
-            // 
-            // OpenLocationToolStripMenuItem
-            // 
-            this.OpenLocationToolStripMenuItem.Image = global::SSMatters.Properties.Resources.folder;
-            this.OpenLocationToolStripMenuItem.Name = "OpenLocationToolStripMenuItem";
-            this.OpenLocationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.OpenLocationToolStripMenuItem.Text = "&Open Location";
-            this.OpenLocationToolStripMenuItem.Click += new System.EventHandler(this.OpenLocationToolStripMenuItem_Click);
-            // 
-            // DeleteToolStripMenuItem
-            // 
-            this.DeleteToolStripMenuItem.Image = global::SSMatters.Properties.Resources.delete;
-            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.DeleteToolStripMenuItem.Text = "&Delete";
-            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
