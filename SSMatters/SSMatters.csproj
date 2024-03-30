@@ -161,6 +161,7 @@
     <Content Include="imgs\Screenshot.png" />
     <None Include="Resources\chizl_default_icon.png" />
     <None Include="Resources\power_off.png" />
+    <None Include="Resources\Search.png" />
     <Content Include="SizeMatters.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

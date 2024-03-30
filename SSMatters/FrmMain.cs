@@ -1046,6 +1046,39 @@ namespace SSMatters
         {
             GoBack();
         }
+        private void FindToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var searchFor = Environment.UserName;
+            //if (LoadData.IsScanning)
+            //return;
+
+            // Insainly FAST!!
+            var found = LoadData.SearchList(LoadData.CurrentScanFolderDetails, searchFor);
+            var cnt = found.Count;
+
+            if(cnt == 0)
+                FoundCountLabel.Text = $"Search data '{searchFor}' was Not Found.   This search isn't fully implimented, just testing how fast the seach can be.";
+            else
+                FoundCountLabel.Text = $"Found: {cnt} instances of '{searchFor}'.   This search isn't fully implimented, just testing how fast the seach can be.";
+
+            this.PanelSearchResults.Visible = true;
+
+            //if (ButtonStartScan.Enabled && !string.IsNullOrWhiteSpace(this.CurrentMouseOver) && Directory.Exists(this.CurrentMouseOver))
+            //{
+            //    StartScan(this.CurrentMouseOver, false);
+            //    SetButtonStatus();
+            //}
+            //if (ButtonStartScan.Enabled && !string.IsNullOrWhiteSpace(this.CurrentMouseOver) && File.Exists(this.CurrentMouseOver))
+            //{
+            //    if (!LoadData.OpenFile(this.CurrentMouseOver))
+            //        MessageBox.Show($"Failed to execute {this.CurrentMouseOver}.", About.AppTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
         #endregion
+
+        private void FoundCountLabel_Click(object sender, EventArgs e)
+        {
+            this.PanelSearchResults.Visible = false;
+        }
     }
 }

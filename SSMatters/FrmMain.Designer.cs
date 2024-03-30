@@ -33,12 +33,14 @@ namespace SSMatters
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.MainWinMenuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuActions = new System.Windows.Forms.ToolStripMenuItem();
             this.LblStartingDriveOrPath = new System.Windows.Forms.ToolStripMenuItem();
             this.CmbStartingDriveOrPath = new System.Windows.Forms.ToolStripComboBox();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.ToolStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.ButtonStartScan = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.PanelTopMenuStartStopButtons = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.CkbAutoIOMonitor = new System.Windows.Forms.CheckBox();
             this.ButtonStopScan = new System.Windows.Forms.Button();
             this.BtnPickFolder = new System.Windows.Forms.Button();
@@ -47,7 +49,7 @@ namespace SSMatters
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.LblFolderHoverInfo = new System.Windows.Forms.Label();
             this.LblCurrentPath = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.PanelLocationRootButton = new System.Windows.Forms.Panel();
             this.BtnBackFolder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnRoot = new System.Windows.Forms.Button();
@@ -55,27 +57,31 @@ namespace SSMatters
             this.FileTreeMapPanel = new System.Windows.Forms.Panel();
             this.LblFileHoverInfo = new System.Windows.Forms.Label();
             this.WatchTimer = new System.Windows.Forms.Timer(this.components);
-            this.MenuActions = new System.Windows.Forms.ToolStripMenuItem();
+            this.PanelSearchResults = new System.Windows.Forms.Panel();
+            this.PanelFoldersAndFiles = new System.Windows.Forms.Panel();
             this.BackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FindToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuActionsBack = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.FoundCountLabel = new System.Windows.Forms.Label();
             this.MainWinMenuStrip.SuspendLayout();
             this.MainStatusStrip.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.PanelTopMenuStartStopButtons.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.FolderTreeMapPanel.SuspendLayout();
             this.FileFolderContextMenuStrip.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.PanelLocationRootButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FileFldrSplitContainer)).BeginInit();
             this.FileFldrSplitContainer.Panel1.SuspendLayout();
             this.FileFldrSplitContainer.Panel2.SuspendLayout();
             this.FileFldrSplitContainer.SuspendLayout();
             this.FileTreeMapPanel.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.PanelSearchResults.SuspendLayout();
+            this.PanelFoldersAndFiles.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainWinMenuStrip
@@ -89,18 +95,27 @@ namespace SSMatters
             this.CmbStartingDriveOrPath});
             this.MainWinMenuStrip.Location = new System.Drawing.Point(0, 2);
             this.MainWinMenuStrip.Name = "MainWinMenuStrip";
-            this.MainWinMenuStrip.Size = new System.Drawing.Size(560, 27);
+            this.MainWinMenuStrip.Size = new System.Drawing.Size(440, 27);
             this.MainWinMenuStrip.TabIndex = 0;
             this.MainWinMenuStrip.Text = "menuStrip1";
             // 
             // MenuFile
             // 
             this.MenuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FindToolStripMenuItem,
             this.AboutToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.MenuFile.Name = "MenuFile";
             this.MenuFile.Size = new System.Drawing.Size(37, 23);
             this.MenuFile.Text = "&File";
+            // 
+            // MenuActions
+            // 
+            this.MenuActions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuActionsBack});
+            this.MenuActions.Name = "MenuActions";
+            this.MenuActions.Size = new System.Drawing.Size(59, 23);
+            this.MenuActions.Text = "&Actions";
             // 
             // LblStartingDriveOrPath
             // 
@@ -149,18 +164,31 @@ namespace SSMatters
             this.ButtonStartScan.UseVisualStyleBackColor = false;
             this.ButtonStartScan.Click += new System.EventHandler(this.ButtonStartScan_Click);
             // 
-            // panel1
+            // PanelTopMenuStartStopButtons
             // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.MainWinMenuStrip);
-            this.panel1.Controls.Add(this.BtnPickFolder);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.panel1.Size = new System.Drawing.Size(970, 38);
-            this.panel1.TabIndex = 3;
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Default_Cursor);
+            this.PanelTopMenuStartStopButtons.BackColor = System.Drawing.SystemColors.Control;
+            this.PanelTopMenuStartStopButtons.Controls.Add(this.panel3);
+            this.PanelTopMenuStartStopButtons.Controls.Add(this.MainWinMenuStrip);
+            this.PanelTopMenuStartStopButtons.Controls.Add(this.BtnPickFolder);
+            this.PanelTopMenuStartStopButtons.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelTopMenuStartStopButtons.Location = new System.Drawing.Point(0, 0);
+            this.PanelTopMenuStartStopButtons.Name = "PanelTopMenuStartStopButtons";
+            this.PanelTopMenuStartStopButtons.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.PanelTopMenuStartStopButtons.Size = new System.Drawing.Size(970, 38);
+            this.PanelTopMenuStartStopButtons.TabIndex = 3;
+            this.PanelTopMenuStartStopButtons.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Default_Cursor);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.CkbAutoIOMonitor);
+            this.panel3.Controls.Add(this.ButtonStopScan);
+            this.panel3.Controls.Add(this.ButtonStartScan);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(745, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(5);
+            this.panel3.Size = new System.Drawing.Size(225, 33);
+            this.panel3.TabIndex = 6;
             // 
             // CkbAutoIOMonitor
             // 
@@ -204,7 +232,7 @@ namespace SSMatters
             this.FolderTreeMapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FolderTreeMapPanel.Location = new System.Drawing.Point(0, 0);
             this.FolderTreeMapPanel.Name = "FolderTreeMapPanel";
-            this.FolderTreeMapPanel.Size = new System.Drawing.Size(476, 565);
+            this.FolderTreeMapPanel.Size = new System.Drawing.Size(471, 485);
             this.FolderTreeMapPanel.TabIndex = 4;
             this.FolderTreeMapPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.FolderTreeMapPanel_Paint);
             this.FolderTreeMapPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.FolderTreeMapPanel_MouseDoubleClick);
@@ -251,17 +279,17 @@ namespace SSMatters
             this.LblCurrentPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LblCurrentPath.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Default_Cursor);
             // 
-            // panel2
+            // PanelLocationRootButton
             // 
-            this.panel2.Controls.Add(this.LblCurrentPath);
-            this.panel2.Controls.Add(this.BtnBackFolder);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.BtnRoot);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 38);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(970, 22);
-            this.panel2.TabIndex = 5;
+            this.PanelLocationRootButton.Controls.Add(this.LblCurrentPath);
+            this.PanelLocationRootButton.Controls.Add(this.BtnBackFolder);
+            this.PanelLocationRootButton.Controls.Add(this.label1);
+            this.PanelLocationRootButton.Controls.Add(this.BtnRoot);
+            this.PanelLocationRootButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelLocationRootButton.Location = new System.Drawing.Point(0, 38);
+            this.PanelLocationRootButton.Name = "PanelLocationRootButton";
+            this.PanelLocationRootButton.Size = new System.Drawing.Size(970, 22);
+            this.PanelLocationRootButton.TabIndex = 5;
             // 
             // BtnBackFolder
             // 
@@ -299,7 +327,7 @@ namespace SSMatters
             // 
             this.FileFldrSplitContainer.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.FileFldrSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FileFldrSplitContainer.Location = new System.Drawing.Point(0, 60);
+            this.FileFldrSplitContainer.Location = new System.Drawing.Point(5, 5);
             this.FileFldrSplitContainer.Name = "FileFldrSplitContainer";
             // 
             // FileFldrSplitContainer.Panel1
@@ -309,8 +337,8 @@ namespace SSMatters
             // FileFldrSplitContainer.Panel2
             // 
             this.FileFldrSplitContainer.Panel2.Controls.Add(this.FileTreeMapPanel);
-            this.FileFldrSplitContainer.Size = new System.Drawing.Size(970, 565);
-            this.FileFldrSplitContainer.SplitterDistance = 476;
+            this.FileFldrSplitContainer.Size = new System.Drawing.Size(960, 485);
+            this.FileFldrSplitContainer.SplitterDistance = 471;
             this.FileFldrSplitContainer.SplitterWidth = 10;
             this.FileFldrSplitContainer.TabIndex = 6;
             this.FileFldrSplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.FileFldrSplitContainer_SplitterMoved);
@@ -322,7 +350,7 @@ namespace SSMatters
             this.FileTreeMapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FileTreeMapPanel.Location = new System.Drawing.Point(0, 0);
             this.FileTreeMapPanel.Name = "FileTreeMapPanel";
-            this.FileTreeMapPanel.Size = new System.Drawing.Size(484, 565);
+            this.FileTreeMapPanel.Size = new System.Drawing.Size(479, 485);
             this.FileTreeMapPanel.TabIndex = 0;
             this.FileTreeMapPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.FileTreeMapPanel_Paint);
             this.FileTreeMapPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.FileTreeMapPanel_MouseDoubleClick);
@@ -347,13 +375,25 @@ namespace SSMatters
             this.WatchTimer.Interval = 300;
             this.WatchTimer.Tick += new System.EventHandler(this.WatchTimer_Tick);
             // 
-            // MenuActions
+            // PanelSearchResults
             // 
-            this.MenuActions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuActionsBack});
-            this.MenuActions.Name = "MenuActions";
-            this.MenuActions.Size = new System.Drawing.Size(59, 23);
-            this.MenuActions.Text = "&Actions";
+            this.PanelSearchResults.Controls.Add(this.FoundCountLabel);
+            this.PanelSearchResults.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelSearchResults.Location = new System.Drawing.Point(0, 60);
+            this.PanelSearchResults.Name = "PanelSearchResults";
+            this.PanelSearchResults.Size = new System.Drawing.Size(970, 70);
+            this.PanelSearchResults.TabIndex = 7;
+            this.PanelSearchResults.Visible = false;
+            // 
+            // PanelFoldersAndFiles
+            // 
+            this.PanelFoldersAndFiles.Controls.Add(this.FileFldrSplitContainer);
+            this.PanelFoldersAndFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelFoldersAndFiles.Location = new System.Drawing.Point(0, 130);
+            this.PanelFoldersAndFiles.Name = "PanelFoldersAndFiles";
+            this.PanelFoldersAndFiles.Padding = new System.Windows.Forms.Padding(5);
+            this.PanelFoldersAndFiles.Size = new System.Drawing.Size(970, 495);
+            this.PanelFoldersAndFiles.TabIndex = 8;
             // 
             // BackToolStripMenuItem
             // 
@@ -388,10 +428,20 @@ namespace SSMatters
             this.DeleteToolStripMenuItem.Text = "&Delete";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
+            // FindToolStripMenuItem
+            // 
+            this.FindToolStripMenuItem.Image = global::SSMatters.Properties.Resources.Search;
+            this.FindToolStripMenuItem.Name = "FindToolStripMenuItem";
+            this.FindToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.FindToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.FindToolStripMenuItem.Text = "&Find";
+            this.FindToolStripMenuItem.Click += new System.EventHandler(this.FindToolStripMenuItem_Click);
+            // 
             // AboutToolStripMenuItem
             // 
             this.AboutToolStripMenuItem.Image = global::SSMatters.Properties.Resources.chizl_default_icon;
             this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
+            this.AboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.AboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AboutToolStripMenuItem.Text = "&About";
             this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
@@ -400,6 +450,7 @@ namespace SSMatters
             // 
             this.ExitToolStripMenuItem.Image = global::SSMatters.Properties.Resources.power_off;
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "E&xit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
@@ -413,26 +464,25 @@ namespace SSMatters
             this.MenuActionsBack.Text = "&Back";
             this.MenuActionsBack.Click += new System.EventHandler(this.MenuActionsBack_Click);
             // 
-            // panel3
+            // FoundCountLabel
             // 
-            this.panel3.Controls.Add(this.CkbAutoIOMonitor);
-            this.panel3.Controls.Add(this.ButtonStopScan);
-            this.panel3.Controls.Add(this.ButtonStartScan);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(745, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(225, 33);
-            this.panel3.TabIndex = 6;
+            this.FoundCountLabel.AutoSize = true;
+            this.FoundCountLabel.Location = new System.Drawing.Point(12, 3);
+            this.FoundCountLabel.Name = "FoundCountLabel";
+            this.FoundCountLabel.Size = new System.Drawing.Size(13, 13);
+            this.FoundCountLabel.TabIndex = 0;
+            this.FoundCountLabel.Text = "?";
+            this.FoundCountLabel.Click += new System.EventHandler(this.FoundCountLabel_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 647);
-            this.Controls.Add(this.FileFldrSplitContainer);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PanelFoldersAndFiles);
+            this.Controls.Add(this.PanelSearchResults);
+            this.Controls.Add(this.PanelLocationRootButton);
+            this.Controls.Add(this.PanelTopMenuStartStopButtons);
             this.Controls.Add(this.MainStatusStrip);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -447,20 +497,23 @@ namespace SSMatters
             this.MainWinMenuStrip.PerformLayout();
             this.MainStatusStrip.ResumeLayout(false);
             this.MainStatusStrip.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.PanelTopMenuStartStopButtons.ResumeLayout(false);
+            this.PanelTopMenuStartStopButtons.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.FolderTreeMapPanel.ResumeLayout(false);
             this.FolderTreeMapPanel.PerformLayout();
             this.FileFolderContextMenuStrip.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.PanelLocationRootButton.ResumeLayout(false);
             this.FileFldrSplitContainer.Panel1.ResumeLayout(false);
             this.FileFldrSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FileFldrSplitContainer)).EndInit();
             this.FileFldrSplitContainer.ResumeLayout(false);
             this.FileTreeMapPanel.ResumeLayout(false);
             this.FileTreeMapPanel.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.PanelSearchResults.ResumeLayout(false);
+            this.PanelSearchResults.PerformLayout();
+            this.PanelFoldersAndFiles.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,14 +526,14 @@ namespace SSMatters
         private System.Windows.Forms.ToolStripMenuItem MenuFile;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.Button ButtonStartScan;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel PanelTopMenuStartStopButtons;
         private System.Windows.Forms.Button ButtonStopScan;
         private System.Windows.Forms.Panel FolderTreeMapPanel;
         private System.Windows.Forms.ToolStripMenuItem LblStartingDriveOrPath;
         private System.Windows.Forms.ToolStripComboBox CmbStartingDriveOrPath;
         private System.Windows.Forms.Button BtnPickFolder;
         private System.Windows.Forms.Label LblCurrentPath;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel PanelLocationRootButton;
         private System.Windows.Forms.Button BtnBackFolder;
         private System.Windows.Forms.Button BtnRoot;
         private System.Windows.Forms.Label label1;
@@ -500,6 +553,10 @@ namespace SSMatters
         private ToolStripMenuItem MenuActions;
         private ToolStripMenuItem MenuActionsBack;
         private Panel panel3;
+        private Panel PanelSearchResults;
+        private Panel PanelFoldersAndFiles;
+        private ToolStripMenuItem FindToolStripMenuItem;
+        private Label FoundCountLabel;
     }
 }
 

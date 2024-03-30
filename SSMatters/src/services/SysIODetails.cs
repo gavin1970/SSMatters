@@ -286,6 +286,27 @@ namespace SSMatters.src.services
         #endregion
 
         #region Publc Mehtods
+        public List<string> SearchList(FolderData root, string searchFor, List<string> found = null)
+        {
+            if(found == null)
+                found = new List<string>();
+
+            foreach (var file in root.Files)
+            {
+                if (file.FileName.Contains(searchFor))
+                    found.Add(file.FullName);
+            }
+
+            foreach (var dir in root.Directories)
+            {
+                if (dir.DirectoryName.Contains(searchFor))
+                    found.Add(dir.FullPath);
+
+                found = SearchList(dir, searchFor, found);
+            }
+
+            return found;
+        }
         public void StopScan()
         {
             this.ForceStop = true;
